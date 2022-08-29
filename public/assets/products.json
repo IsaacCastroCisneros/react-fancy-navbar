@@ -1,0 +1,26 @@
+[
+  {
+    "id":1, 
+    "name":"xfmf",
+    "type":"mecanico",
+    "price":200,
+    "description":"un teclado lorem un teclado lorem un teclado lorem un teclado lorem",
+    "img":"/assets/imgs/Capturatec3.jpg"
+  },
+  {
+    "id":2,
+    "name":"mintaka",
+    "type":"membrana",
+    "price":5666,
+    "description":"un teclado lorem un teclado lorem un teclado lorem un teclado lorem",
+    "img":"/assets/imgs/Capturatec3.jpg"
+  },
+  {
+    "id":3,
+    "name":"gammaKay",
+    "type":"mecanico",
+    "price":56444,
+    "description":"un teclado lorem un teclado lorem un teclado lorem un teclado lorem",
+    "img":"/assets/imgs/Capturatec3.jpg"
+  }
+]
