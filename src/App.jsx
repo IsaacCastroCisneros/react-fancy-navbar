@@ -11,13 +11,23 @@ const LOCAL_STORAGE_KEY = 'cart';
 
 function App() 
 {  
-  const{data,status}=useQuery(['products'],getProducts);
+  const{data,status}=useQuery('products',getProducts);
   const[cartProducts,setCartProducts]=useState([])
 
   const contextValues =
   {
      createProductCart,
-     cartProducts
+     cartProducts,
+     updateCartProducts,
+  }
+
+  async function getProducts()
+  {
+    const data = await fetch('/assets/products.json')
+    .then(res=> res.json())
+    .then(data=> data)
+
+    return data
   }
 
   useEffect(()=>
@@ -31,44 +41,69 @@ function App()
     localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(cartProducts))
   },[cartProducts])
 
-
-  async function createProductCart(id)
+  if(status === "loading")
   {
-    console.log('ff')
+     return <div>an error was occurred...</div>
+  }
+  if(status === "error")
+  {
+     return <div>an error was occurred...</div>
+  }
+
+  function createProductCart(id)
+  {
+    const exist = cartProducts.find(product=>product.id===id)
+
+    if(exist!==undefined)
+    {
+      const newProducts = [...cartProducts];
+      const product = newProducts.find(product=>product.id===exist.id);
+      product.quantity++    
+      setCartProducts(newProducts)
+      return
+    }
+
     const product = data.find(product=>product.id===id)
 
     const newCartProduct=
     {
+      id,
       name:product.name,
       price:product.price,
       desc:product.description,
-      type:product.type
+      type:product.type,
+      img:product.img,
+      quantity:1
     }
-    console.log(newCartProduct)
 
     setCartProducts([...cartProducts,newCartProduct])
   }
 
-  async function getProducts()
+  function updateCartProducts(products)
   {
-    return fetch('/assets/products.json')
-    .then(res=> res.json())
-    .then(data=> data)
+     setCartProducts(products)
   }
-/*   console.log(cartProducts) */
+
   
   return (
     <>
       <appContext.Provider value={contextValues}>
         <header className="block px-[2rem] py-5 bg-slate-900">
-          <Navbar/>
+          <Navbar />
         </header>
         <main className="block p-[2rem] py-0">
           <div className="w-[90rem] my-0 mx-auto max-w-[100%]">
-            <div className="flex p-[2rem] bg-slate-800 w-[100%] gap-[1rem] pt-[4rem] flex-wrap">
-              {data && data.map((product) => {
-                  return <Card key={uuidv4()} {...product} />;
-                })}
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] p-[2rem] bg-slate-800 w-[100%] gap-[1rem] pt-[4rem]">
+              {data.map((product) => {
+                return (
+                  <Card
+                    key={uuidv4()}
+                    {...product}
+                    createProductCart={createProductCart}
+                  />
+                );
+                //es este componente
+              })}
             </div>
           </div>
         </main>

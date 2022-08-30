@@ -17,3 +17,9 @@ body
     height: 100vh;
     background-color: #000;
 }
+.active
+{
+    opacity: 1;
+    top: 0;
+    pointer-events: auto;
+}

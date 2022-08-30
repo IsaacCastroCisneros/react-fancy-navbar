@@ -11,12 +11,12 @@ export default function Card(props)
     name,
     price,
     img,
-    description
+    description,
   }=props
 
   return (
     <>
-      <div className="text-white flex-1 bg-gray-900 min-h-[15rem] min-w-[20rem] p-[1.5rem] flex flex-col gap-[.5rem] rounded-[.5rem]">
+      <div className="text-white flex-1 bg-gray-900 min-h-[15rem] p-[1.5rem] flex flex-col gap-[.5rem] rounded-[.5rem]">
         <div className='w-[100%] h-[13rem] overflow-hidden'>
           <img src={img} alt="" className=" object-cover" />
         </div>

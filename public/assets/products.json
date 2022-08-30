@@ -13,7 +13,7 @@
     "type":"membrana",
     "price":5666,
     "description":"un teclado lorem un teclado lorem un teclado lorem un teclado lorem",
-    "img":"/assets/imgs/Capturatec3.jpg"
+    "img":"/assets/imgs/dUBRzZ2.jpg"
   },
   {
     "id":3,
@@ -21,6 +21,14 @@
     "type":"mecanico",
     "price":56444,
     "description":"un teclado lorem un teclado lorem un teclado lorem un teclado lorem",
-    "img":"/assets/imgs/Capturatec3.jpg"
+    "img":"/assets/imgs/Mejores-Teclados-Mecánicos-585x400.jpg"
+  },
+  {
+    "id":4,
+    "name":"yoKeyboard",
+    "type":"membrana",
+    "price":564,
+    "description":"un ore lorem teclado lorem un teclado lorem un teclado lorem un teclado lorem",
+    "img":"/assets/imgs/teclados-mecanicos-baratos.webp"
   }
 ]
